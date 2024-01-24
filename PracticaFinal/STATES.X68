@@ -1,5 +1,5 @@
 ; =============================================================================
-; GESTI”N DE ESTADOS DEL JUEGO
+; GESTI√ìN DE ESTADOS DEL JUEGO
 ; =============================================================================
 
 ; -----------------------------------------------------------------------------
@@ -17,7 +17,7 @@ STAINIT
 
 ; -----------------------------------------------------------------------------
 STAUPD
-; REALIZA LA ACTUALIZACI”N DEL ESTADO Y LA INICIALIZACI”N SI ES NECESARIO
+; REALIZA LA ACTUALIZACI√ìN DEL ESTADO Y LA INICIALIZACI√ìN SI ES NECESARIO
 ; ENTRADA  - NINGUNA
 ; SALIDA   - NINGUNA
 ; MODIFICA - NINGUNA
@@ -27,7 +27,7 @@ STAUPD
             MOVE.W  (STANEXT),D0
             CMP.W   (STACUR),D0
             BEQ     .DOUPD
-            MOVE.W  D0,(STACUR)             ; SI EL ESTADO CAMBI”, HACE INIT
+            MOVE.W  D0,(STACUR)             ; SI EL ESTADO CAMBI√ì, HACE INIT
             LSL.L   #2,D0
             MOVE.L  D0,A0
             MOVE.L  .INITBL(A0),A0
@@ -45,7 +45,7 @@ STAUPD
 
 ; -----------------------------------------------------------------------------
 STAPLOT
-; REALIZA LA REPRESENTACI”N DEL ESTADO
+; REALIZA LA REPRESENTACI√ìN DEL ESTADO
 ; ENTRADA  - NINGUNA
 ; SALIDA   - NINGUNA
 ; MODIFICA - NINGUNA
@@ -63,17 +63,17 @@ STAPLOT
 
 ; -----------------------------------------------------------------------------
 STAEMPTY
-; SUBRUTINA VACÕA PARA CASOS EN LOS QUE NO HAY NADA QUE HACER
+; SUBRUTINA VAC√çA PARA CASOS EN LOS QUE NO HAY NADA QUE HACER
 ; ENTRADA  - NINGUNA
 ; SALIDA   - NINGUNA
 ; MODIFICA - NINGUNA
-; NOTA     - SOLO UN MARCADOR DE POSICI”N. NADA QUE HACER.
+; NOTA     - SOLO UN MARCADOR DE POSICI√ìN. NADA QUE HACER.
 ; -----------------------------------------------------------------------------
             RTS
 
 ; -----------------------------------------------------------------------------
 STAPLAYI    EQU     PLRINIT
-; INICIALIZACI”N DEL ESTADO DE JUEGO.
+; INICIALIZACI√ìN DEL ESTADO DE JUEGO.
 ; ENTRADA  - NINGUNA
 ; SALIDA   - NINGUNA
 ; MODIFICA - NINGUNA
@@ -82,7 +82,7 @@ STAPLAYI    EQU     PLRINIT
 
 ; -----------------------------------------------------------------------------
 STAPLAYU
-; ACTUALIZACI”N DEL ESTADO DE JUEGO
+; ACTUALIZACI√ìN DEL ESTADO DE JUEGO
 ; ENTRADA  - NINGUNA
 ; SALIDA   - NINGUNA
 ; MODIFICA - NINGUNA
@@ -93,7 +93,7 @@ STAPLAYU
 
 ; -----------------------------------------------------------------------------
 STAPLAYP
-; REPRESENTACI”N DEL ESTADO DE JUEGO
+; REPRESENTACI√ìN DEL ESTADO DE JUEGO
 ; ENTRADA  - NINGUNA
 ; SALIDA   - NINGUNA
 ; MODIFICA - NINGUNA
@@ -103,7 +103,7 @@ STAPLAYP
 
 ; -----------------------------------------------------------------------------
 STAINTRI    EQU     DMMINIT
-; INICIALIZACI”N DEL ESTADO DE INTRODUCCI”N
+; INICIALIZACI√ìN DEL ESTADO DE INTRODUCCI√ìN
 ; ENTRADA  - NINGUNA
 ; SALIDA   - NINGUNA
 ; MODIFICA - NINGUNA
@@ -112,7 +112,7 @@ STAINTRI    EQU     DMMINIT
 
 ; -----------------------------------------------------------------------------
 STAINTRU
-; ACTUALIZACI”N DEL ESTADO DE INTRODUCCI”N
+; ACTUALIZACI√ìN DEL ESTADO DE INTRODUCCI√ìN
 ; ENTRADA  - NINGUNA
 ; SALIDA   - NINGUNA
 ; MODIFICA - NINGUNA
@@ -124,7 +124,7 @@ STAINTRU
 
 ; -----------------------------------------------------------------------------
 STAINTRP
-; REPRESENTACI”N DEL ESTADO DE INTRODUCCI”N
+; REPRESENTACI√ìN DEL ESTADO DE INTRODUCCI√ìN
 ; ENTRADA  - NINGUNA
 ; SALIDA   - NINGUNA
 ; MODIFICA - NINGUNA
@@ -133,7 +133,7 @@ STAINTRP
                                     
             ; ACTIVAR MUSICA
             MOVE.B  #AUDMSKLP|AUDINTID,D1
-            JSR     AUDPLAY                 ; REPRODUCIR M⁄SICA
+            JSR     AUDPLAY                 ; REPRODUCIR M√öSICA
             MOVE.B  #AUDACCN,(AUDACCSN)     ; RECHAZAR EFECTOS DE SONIDO
                         
             LEA     INTRO,A0
@@ -235,12 +235,12 @@ STAINTRP
 .TOP1       DC.B    '1. ',0
 .TOP2       DC.B    '2. ',0
 .TOP3       DC.B    '3. ',0
-.PRSSTR     DC.B    'PRESS ANYTHING TO PLAY',0
+.PRSSTR     DC.B    'PRESS SPACE TO PLAY',0
             DS.W    0
 
 ; -----------------------------------------------------------------------------
 STAGOVRU
-; ACTUALIZACI”N DEL ESTADO DE FIN DEL JUEGO
+; ACTUALIZACI√ìN DEL ESTADO DE FIN DEL JUEGO
 ; ENTRADA  - NINGUNA
 ; SALIDA   - NINGUNA
 ; MODIFICA - NINGUNA
@@ -248,7 +248,7 @@ STAGOVRU
             BTST.B  #KBDBITF1,(KBDEDGE)
             BEQ     .END
             
-            ; GUARDAMOS PUNTUACI”N
+            ; GUARDAMOS PUNTUACI√ìN
             JSR     SCOUPD
             
             MOVE.W  #STAINTR,(STANEXT)
@@ -256,7 +256,7 @@ STAGOVRU
 
 ; -----------------------------------------------------------------------------
 STAGOVRP
-; REPRESENTACI”N DEL ESTADO DE FIN DEL JUEGO
+; REPRESENTACI√ìN DEL ESTADO DE FIN DEL JUEGO
 ; ENTRADA  - NINGUNA
 ; SALIDA   - NINGUNA
 ; MODIFICA - NINGUNA
@@ -279,7 +279,7 @@ STAGOVRP
             MOVE.B  #17,D0
             TRAP    #15
             
-            ; MIRAMOS SI ES NUEVO R…CORD
+            ; MIRAMOS SI ES NUEVO R√âCORD
             JSR     SCOREAD
             LEA     FILEBUFF,A0
             MOVE.W  (A0),D1
@@ -298,8 +298,8 @@ STAGOVRP
             RTS
 
 .GOVSTR     DC.B    'GAME  OVER',0
-.GOVNRD     DC.B    '°°° NUEVO R…CORD !!!',0
-.GOVSCO     DC.B    'PUNTUACI”N: ',0
+.GOVNRD     DC.B    '¬°¬°¬° NUEVO R√âCORD !!!',0
+.GOVSCO     DC.B    'PUNTUACI√ìN: ',0
             DS.W    0
 *~Font name~Fixedsys~
 *~Font size~9~
